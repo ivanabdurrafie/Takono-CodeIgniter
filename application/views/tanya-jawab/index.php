@@ -11,17 +11,13 @@
                         <form action="">
                             <input type="text" class="form-control" placeholder="Cari pertanyaan" required>
                             <button type="submit" class="btn btn-icon"><i class="ik ik-search"></i></button>
-                            <button type="button" id="adv_wrap_toggler" class="adv-btn ik ik-chevron-down dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                            <div class="adv-search-wrap dropdown-menu dropdown-menu-right" aria-labelledby="adv_wrap_toggler">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Pilih mata pelajaran">
-                                </div>
-                                <button class="btn btn-theme">Cari</button>
-                            </div>
                         </form>
                     </div>
+
                     <div class="right-menu float-right">
-                        <a href="<?= base_url()?>tanyajawab/tambahpertanyaan" class="btn btn-success">Tanyakan sesuatu</a>
+                        <?php if ($this->session->userdata('level') == null) : ?>
+                            <a href="<?= base_url() ?>tanya" class="btn btn-success">Tanyakan sesuatu</a>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
@@ -32,7 +28,7 @@
                 <div class="card d-flex flex-row mb-3">
                     <div class="d-flex flex-grow-1 min-width-zero card-content">
                         <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-                            <a class="list-item-heading mb-1 truncate w-30 w-xs-100 font-weight-bold" href="<?= base_url()?>tanyajawab/detailpertanyaan">
+                            <a class="list-item-heading mb-1 truncate w-30 w-xs-100 font-weight-bold" href="<?= base_url() ?>tanyajawab/detailpertanyaan">
                                 Apa yang dimaksud dengan sistem komputer?.
                             </a>
                             <p class="mb-1 text-muted text-small category w-15 w-xs-100">Sistem Informasi</p>

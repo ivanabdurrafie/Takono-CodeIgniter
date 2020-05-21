@@ -6,8 +6,9 @@
                     <h3>Buat pertanyaan</h3>
                 </div>
             </div>
-            <div class="card-body font-weight-bold">
-                <form action="<?= base_url() ?>tanyajawab/tambahKomentar" method="POST">
+            <form action="<?= base_url() ?>tanyajawab/tambahKomentar" method="POST">
+                <div class="card-body font-weight-bold">
+
                     <div class="form-group">
                         <label for="exampleSelectGender">Mata Pelajaran :</label>
                         <select class="form-control" id="exampleSelectGender">
@@ -33,11 +34,12 @@
                             </span>
                         </div>
                     </div>
-
+                </div>
+                <div class="card-footer">
                     <button class="btn btn-primary">Kirim pertanyaan</button>
-                    <a href="<?= base_url() ?>tanyajawab/" class="btn btn-light">Kembali</a>
-                </form>
-            </div>
+                    <a href="<?= base_url() ?>tanyajawab/" class="btn btn-light ml-2">Kembali</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -9,6 +9,7 @@ class Login extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('login_model');
     }
 
 
@@ -44,7 +45,29 @@ class Login extends CI_Controller
 
     public function prosesLogin()
     {
-        redirect('dashboard_user');
+        $username = htmlspecialchars($this->input->post('username'));
+        $password = htmlspecialchars($this->input->post('password'));
+
+        $ceklogin = $this->login_model->login($username, $password);
+
+        if ($ceklogin) {
+            foreach ($ceklogin as $row);
+            $this->session->set_userdata('id_user', $row->id_user);
+            $this->session->set_userdata('level', $row->level);
+            redirect('dashboard', 'refresh');
+        } else {
+            $data['pesan'] = 'Login gagal';
+            $data['title'] = 'Halaman login';
+            $this->load->view('template/header', $data);
+            $this->load->view('login/index');
+            $this->load->view('template/footer-login');
+        }
+    }
+
+    public function logout()
+    {
+          $this->session->sess_destroy();
+          redirect('dashboard', 'refresh');
     }
 
     public function lupaPassword()

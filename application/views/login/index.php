@@ -25,10 +25,10 @@
                         </div>
                         <div class="form-group">
                             <?php if (form_error('password')) : ?>
-                                <input type="text" class="form-control form-control-warning form-txt-warning" placeholder="<?= strip_tags(form_error('password')) ?>" name="password" ?>
+                                <input type="password" class="form-control form-control-warning form-txt-warning" placeholder="<?= strip_tags(form_error('password')) ?>" name="password" ?>
                                 <i class="ik ik-lock"></i>
                             <?php else : ?>
-                                <input type="text" class="form-control" placeholder="Masukkan password kamu" name="password" value="<?= set_value('password')?>">
+                                <input type="password" class="form-control" placeholder="Masukkan password kamu" name="password" value="<?= set_value('password')?>">
                                 <i class="ik ik-lock"></i>
                             <?php endif ?>
                         </div>
