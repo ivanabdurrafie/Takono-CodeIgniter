@@ -16,11 +16,11 @@
                         <a href="<?= base_url()?>"><i class="ik ik-home"></i><span>Dashboard</span></a>
                     </div>
                     <div class="nav-item">
-                        <a href="pages/navbar.html"><i class="ik ik-message-circle"></i><span>Tanya -
+                        <a href="<?= base_url()?>tanyajawab"><i class="ik ik-message-circle"></i><span>Tanya -
                                 Jawab</span></a>
                     </div>
                     <div class="nav-item">
-                        <a href="pages/navbar.html"><i class="ik ik-info"></i><span>Tentang Kami</span></a>
+                        <a href="<?= base_url()?>tentangkami"><i class="ik ik-info"></i><span>Tentang Kami</span></a>
                     </div>
                 </nav>
             </div>

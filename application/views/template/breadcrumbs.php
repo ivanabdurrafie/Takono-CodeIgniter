@@ -13,9 +13,11 @@
                 </div>
                 <div class="col-lg-4">
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
-                        <p class="breadcrumbs mt-2"><?= $breadcrumbs?></p>
+                        <p class="breadcrumbs mt-2"><?= $breadcrumbs ?></p>
                     </nav>
                 </div>
             </div>
         </div>
-    </div>
+    
+
+    

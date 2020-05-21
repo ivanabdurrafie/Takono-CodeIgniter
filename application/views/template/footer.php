@@ -25,6 +25,7 @@
 <script src="<?= base_url('') ?>assets/js/charts.js"></script>
 <script src="<?= base_url('') ?>assets/dist/js/theme.min.js"></script>
 <script src="<?= base_url('') ?>assets/js/datatables.js"></script>
+<script src="<?= base_url('') ?>assets/js/layouts.js"></script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
     (function(b, o, i, l, e, r) {

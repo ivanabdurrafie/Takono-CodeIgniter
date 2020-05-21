@@ -7,8 +7,8 @@
                     <button type="button" id="navbar-fullscreen" class="nav-link"><i class="ik ik-maximize"></i></button>
                 </div>
                 <div class="top-menu d-flex align-items-center">
-                    <a href="<?= base_url()?>tanya_guest/" type="button" class="btn btn-primary mr-2">Tanyakan sesuatu</a>
-                    <a href="#" type="button" class="btn btn-success">Login</a>
+                    <a href="<?= base_url()?>tanya/" type="button" class="btn btn-primary mr-2">Tanyakan sesuatu</a>
+                    <a href="<?= base_url()?>login/" type="button" class="btn btn-success">Login</a>
                 </div>
             </div>
         </div>
