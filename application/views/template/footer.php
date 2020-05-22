@@ -9,7 +9,7 @@
 </div>
 </div>
 
-<script src="<?= base_url('') ?>assets/src/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="<?= base_url('') ?>assets/plugins/popper.js/dist/umd/popper.min.js"></script>
 <script src="<?= base_url('') ?>assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="<?= base_url('') ?>assets/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
@@ -24,7 +24,6 @@
 <script src="<?= base_url('') ?>assets/js/widgets.js"></script>
 <script src="<?= base_url('') ?>assets/js/charts.js"></script>
 <script src="<?= base_url('') ?>assets/dist/js/theme.min.js"></script>
-<script src="<?= base_url('') ?>assets/js/datatables.js"></script>
 <script src="<?= base_url('') ?>assets/js/layouts.js"></script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>

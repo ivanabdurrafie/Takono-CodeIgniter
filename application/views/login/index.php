@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="sign-btn text-center">
-                            <button class="btn btn-theme" name="submit">Masuk</button>
+                            <button class="btn btn-theme" name="submit">Login</button>
                         </div>
                     </form>
                 </div>

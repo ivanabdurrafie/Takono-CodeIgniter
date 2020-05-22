@@ -35,6 +35,10 @@ class TanyaJawab extends CI_Controller {
 
     public function TanyaJawabku()
     {
+        if ($this->session->userdata('level') == null) {
+            redirect('dashboard','refresh');
+        }
+        
         $data['title'] = "Daftar Pertanyaan dan Jawaban | Takono. Forum Tanya Jawab Sekolah";
         $data['judulHalaman'] = "Pertanyaan dan Jawabanku";
         $data['keteranganHalaman'] = "Hai, ini daftar pertanyaan dan jawabanmu.";
@@ -56,6 +60,10 @@ class TanyaJawab extends CI_Controller {
 
     public function tambahPertanyaan()
     {
+        if ($this->session->userdata('level') == null) {
+            redirect('tanya','refresh');
+        }
+
         $data['title'] = "Buat Pertanyaan | Takono. Forum Tanya Jawab Sekolah";
         $data['judulHalaman'] = "Tanya Jawab";
         $data['keteranganHalaman'] = "Ada yang bingung? yuk buat pertanyaan";
