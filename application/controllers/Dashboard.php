@@ -7,7 +7,7 @@ class Dashboard extends CI_Controller
 
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct();        
         //Do your magic here
     }
 
@@ -18,6 +18,7 @@ class Dashboard extends CI_Controller
         $data['keteranganHalaman'] = "Halaman utama <b>Takono.</b>";
         $data['iconHalaman'] = "ik-home";
         $data['breadcrumbs'] = "Dashboard / ";
+        $data['nama'] = $this->session->userdata('username');
         $this->load->view('template/header', $data);
 
         if ($this->session->userdata('level') == "admin") {
@@ -34,9 +35,9 @@ class Dashboard extends CI_Controller
         $this->load->view('template/breadcrumbs');
 
         if ($this->session->userdata('level') == "admin") {
-            $this->load->view('dashboard/index-admin');
+            $this->load->view('dashboard/index-admin',$data);
         } else {
-            $this->load->view('dashboard/index-user');
+            $this->load->view('dashboard/index-user',$data);
         }
 
         $this->load->view('template/footer');

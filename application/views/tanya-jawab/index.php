@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="pl-1 pr-1 mt-2">
-                    <table class="table" id="data_table">
+                    <table class="table" id="lang-dt">
                         <thead>
                             <tr>
                                 <th>Pertanyaan</th>

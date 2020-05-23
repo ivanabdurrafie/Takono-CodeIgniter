@@ -1,7 +1,7 @@
 <div class="page-wrap">
     <div class="app-sidebar colored">
         <div class="sidebar-header">
-            <a class="header-brand" href="index.html">
+            <a class="header-brand" href="<?= base_url()?>">
                 <div class="logo-img">
                     <img src="<?= base_url() ?>assets/src/img/brand-white.png" class="header-brand-img" alt="lavalite" style="width: 110px;">
                 </div>
@@ -40,7 +40,7 @@
                         <a href="<?= base_url()?>pertanyaan"><i class="ik ik-message-circle"></i><span>Pertanyaan</span></a>
                     </div>
                     <div class="nav-item active">
-                        <a href="<?= base_url()?>komentar"><i class="ik ik-message-circle"></i><span>Jawaban</span></a>
+                        <a href="<?= base_url()?>jawaban"><i class="ik ik-message-circle"></i><span>Jawaban</span></a>
                     </div>
                 </nav>
             </div>
