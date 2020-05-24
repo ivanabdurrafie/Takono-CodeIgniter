@@ -1,3 +1,4 @@
+<?php $no = 1 ?>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -19,26 +20,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>RPL-2</td>
-                                <td>
-                                    <div class="table-actions">
-                                        <a href="<?= base_url() ?>kelas/edit"><i class="ik ik-edit text-success"></i></a>
-                                        <a href="<?= base_url() ?>kelas/hapus"><i class="ik ik-trash-2 text-danger"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>RPL-3</td>
-                                <td>
-                                    <div class="table-actions">
-                                        <a href="#"><i class="ik ik-edit text-success"></i></a>
-                                        <a href="#"><i class="ik ik-trash-2 text-danger"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php foreach ($kelas as $k) : ?>
+                                <tr>
+                                    <td><?= $no ?></td>
+                                    <td><?= $k->kelas ?></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="<?= base_url() ?>kelas/edit/<?= $k->id_kelas ?>"><i class="ik ik-edit text-success"></i></a>
+                                            <a href="<?= base_url() ?>kelas/hapus/<?= $k->id_kelas ?>"><i class="ik ik-trash-2 text-danger"></i></a>
+                                        </div>
+                                    </td>
+                                    <?php $no++ ?>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
