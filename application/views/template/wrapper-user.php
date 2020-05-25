@@ -8,7 +8,9 @@
                 <div class="top-menu d-flex align-items-center">
                     <a href="<?= base_url() ?>tanyajawab/tambahpertanyaan" class="btn btn-success">Tanyakan sesuatu</a>
                     <div class="dropdown">
-                        <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="img/user.jpg" alt=""></a>
+                        <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="avatar" src="<?= base_url() ?>uploads/guest.png" alt="">
+                        </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="<?= base_url()?>profil/"><i class="ik ik-user dropdown-icon"></i>
                                 Profil</a>
