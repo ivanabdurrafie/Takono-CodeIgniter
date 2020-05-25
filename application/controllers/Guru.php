@@ -13,6 +13,7 @@ class Guru extends CI_Controller
             redirect('dashboard', 'refresh');
         }
         $this->API = "http://localhost:8000/api";
+        $this->load->model('user_model');
     }
 
 
@@ -110,6 +111,7 @@ class Guru extends CI_Controller
             $insert = $this->curl->simple_post($this->API . '/guru/tambah', $data, array(CURLOPT_BUFFERSIZE => 10));
 
             if ($insert) {
+                $this->user_model->autoTambahUserGuru();
                 $this->session->set_flashdata('berhasil', 'ditambahkan!');
             } else {
                 $this->session->set_flashdata('gagal', 'ditambahkan!');
@@ -192,6 +194,7 @@ class Guru extends CI_Controller
         $delete = $this->curl->simple_delete($this->API . '/guru/delete/' . $id, array(CURLOPT_BUFFERSIZE => 10));
 
         if ($delete) {
+            $this->user_model->autoHapusUserGuru($id);
             $this->session->set_flashdata('berhasil', 'dihapus!');
         } else {
             $this->session->set_flashdata('gagal', 'dihapus!');

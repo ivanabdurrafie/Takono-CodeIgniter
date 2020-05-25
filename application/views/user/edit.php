@@ -6,26 +6,53 @@
                     <h3>Ubah Data</h3>
                 </div>
             </div>
-            <form action="<?= base_url() ?>users/edit" method="POST" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>users/edit/<?= $user['id_user'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="card-body font-weight-bold">
-                    <input type="hidden" name="id_user" value="">
+                    <input type="hidden" name="id_user" value="<?= $user['id_user'] ?>">
+                    <input type="hidden" name="id_siswa" value="<?= $user['id_siswa'] ?>">
+                    <input type="hidden" name="id_guru" value="<?= $user['id_guru'] ?>">
+                    <input type="hidden" name="email" value="<?= $user['email'] ?>">
+
                     <div class="form-group">
-                        <label for="nis">Username : </label>
-                        <input type="text" class="form-control" id="nama" placeholder="Masukkan username" name="username">
+                        <label for="username">Username : </label>
+                        <?php if (form_error('username')) : ?>
+                            <input type="text" class="form-control form-control-warning form-txt-warning" id="nama" placeholder="<?= strip_tags(form_error('username')) ?>" name="username">
+                        <?php else : ?>
+                            <input type="text" class="form-control" id="nama" placeholder="Masukkan username" name="username" value="<?= $user['username'] ?>">
+                        <?php endif ?>
                     </div>
+
                     <div class="form-group">
-                        <label for="nis">Password : </label>
-                        <input type="text" class="form-control" id="nama" placeholder="Masukkan username" name="username">
+                        <label for="password">Password : </label>
+                        <?php if (form_error('password')) : ?>
+                            <input type="password" class="form-control form-control-warning form-txt-warning" id="password" placeholder="<?= strip_tags(form_error('password')) ?>" name="password">
+                        <?php else : ?>
+                            <input type="password" class="form-control" id="password" placeholder="Masukkan password" name="password" value="<?= $user['password'] ?>">
+                        <?php endif ?>
                     </div>
+
                     <div class="form-group">
-                        <label for="kelas">Level :</label>
-                        <select class="form-control" id="exampleSelectGender">
-                            <option>Pilih level</option>
-                            <option>Admin</option>
-                            <option>Guru</option>
-                            <option>Siswa</option>
-                        </select>
+                        <label for="level">Level :</label>
+                        <?php if (form_error('level')) : ?>
+                            <select class="form-control form-control-warning form-txt-warning" id="level" name="level">
+                                <option value=""><?= strip_tags(form_error('level')) ?></option>
+                                <?php foreach ($level as $l) : ?>
+                                    <option value="<?= $l ?>"><?= $l ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        <?php else : ?>
+                            <select class="form-control" id="level" name="level">
+                                <?php foreach ($level as $l) : ?>
+                                    <?php if ($l ==  $user['level']) : ?>
+                                        <option value="<?= $l ?>" selected><?= $l ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $l ?>"><?= $l ?></option>
+                                    <?php endif ?>
+                                <?php endforeach; ?>
+                            </select>
+                        <?php endif ?>
                     </div>
+
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-primary">Ubah data</button>

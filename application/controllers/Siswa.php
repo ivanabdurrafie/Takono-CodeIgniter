@@ -13,6 +13,7 @@ class Siswa extends CI_Controller
             redirect('dashboard', 'refresh');
         }
         $this->API = "http://localhost:8000/api";
+        $this->load->model('user_model');
     }
 
 
@@ -124,6 +125,7 @@ class Siswa extends CI_Controller
             $insert = $this->curl->simple_post($this->API . '/siswa/tambah', $data, array(CURLOPT_BUFFERSIZE => 10));
 
             if ($insert) {
+                $this->user_model->autoTambahUserSiswa();
                 $this->session->set_flashdata('berhasil', 'ditambahkan!');
             } else {
                 $this->session->set_flashdata('gagal', 'ditambahkan!');
@@ -220,6 +222,7 @@ class Siswa extends CI_Controller
         $delete = $this->curl->simple_delete($this->API . '/siswa/delete/' . $id, array(CURLOPT_BUFFERSIZE => 10));
 
         if ($delete) {
+            $this->user_model->autoHapusUserSiswa($id);
             $this->session->set_flashdata('berhasil', 'dihapus!');
         } else {
             $this->session->set_flashdata('gagal', 'dihapus!');
