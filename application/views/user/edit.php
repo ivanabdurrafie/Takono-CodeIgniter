@@ -12,22 +12,14 @@
                     <input type="hidden" name="id_siswa" value="<?= $user['id_siswa'] ?>">
                     <input type="hidden" name="id_guru" value="<?= $user['id_guru'] ?>">
                     <input type="hidden" name="email" value="<?= $user['email'] ?>">
-
-                    <div class="form-group">
-                        <label for="username">Username : </label>
-                        <?php if (form_error('username')) : ?>
-                            <input type="text" class="form-control form-control-warning form-txt-warning" id="nama" placeholder="<?= strip_tags(form_error('username')) ?>" name="username">
-                        <?php else : ?>
-                            <input type="text" class="form-control" id="nama" placeholder="Masukkan username" name="username" value="<?= $user['username'] ?>">
-                        <?php endif ?>
-                    </div>
+                    <input type="hidden" name="username" value="<?= $user['username'] ?>">
 
                     <div class="form-group">
                         <label for="password">Password : </label>
                         <?php if (form_error('password')) : ?>
                             <input type="password" class="form-control form-control-warning form-txt-warning" id="password" placeholder="<?= strip_tags(form_error('password')) ?>" name="password">
                         <?php else : ?>
-                            <input type="password" class="form-control" id="password" placeholder="Masukkan password" name="password" value="<?= $user['password'] ?>">
+                            <input type="password" class="form-control" id="password" placeholder="Masukkan password" name="password" value="">
                         <?php endif ?>
                     </div>
 

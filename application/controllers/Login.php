@@ -54,6 +54,7 @@ class Login extends CI_Controller
             foreach ($ceklogin as $row);
             $this->session->set_userdata('id_user', $row->id_user);
             $this->session->set_userdata('username', $row->username);
+            $this->session->set_userdata('email', $row->email);
             $this->session->set_userdata('id_siswa', $row->id_siswa);
             $this->session->set_userdata('id_guru', $row->id_guru);
             $this->session->set_userdata('level', $row->level);

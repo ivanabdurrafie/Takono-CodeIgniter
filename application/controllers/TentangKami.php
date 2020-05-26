@@ -8,7 +8,7 @@ class TentangKami extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //Do your magic here
+        $this->API = "http://localhost:8000/api";
     }
 
 
@@ -19,6 +19,15 @@ class TentangKami extends CI_Controller
         $data['keteranganHalaman'] = "Informasi Tentang <b>Takono.</b>";
         $data['iconHalaman'] = "ik-info";
         $data['breadcrumbs'] = "Tentang Kami / ";
+
+        if ($this->session->userdata('level') == "guru") {
+            $respon = json_decode($this->curl->simple_get($this->API . '/guru/'));
+            $data['guru'] = $respon->value;
+        } else {
+            $respon = json_decode($this->curl->simple_get($this->API . '/siswa/'));
+            $data['siswa'] = $respon->value;
+        }
+
         $this->load->view('template/header', $data);
         if ($this->session->userdata('level') == "admin") {
             $this->load->view('template/wrapper-admin');

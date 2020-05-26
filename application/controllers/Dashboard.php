@@ -7,8 +7,8 @@ class Dashboard extends CI_Controller
 
     public function __construct()
     {
-        parent::__construct();        
-        //Do your magic here
+        parent::__construct();
+        $this->API = "http://localhost:8000/api";        
     }
 
     public function index()
@@ -19,13 +19,22 @@ class Dashboard extends CI_Controller
         $data['iconHalaman'] = "ik-home";
         $data['breadcrumbs'] = "Dashboard / ";
         $data['nama'] = $this->session->userdata('username');
+        
+        if ($this->session->userdata('level') == "guru") {
+            $respon = json_decode($this->curl->simple_get($this->API . '/guru/'));
+            $data['guru'] = $respon->value;
+        } else {
+            $respon = json_decode($this->curl->simple_get($this->API . '/siswa/'));
+            $data['siswa'] = $respon->value;
+        }
+
         $this->load->view('template/header', $data);
 
         if ($this->session->userdata('level') == "admin") {
             $this->load->view('template/wrapper-admin');
             $this->load->view('template/sidebar-admin');
         } elseif ($this->session->userdata('level') == "guru" || $this->session->userdata('level') == "siswa") {
-            $this->load->view('template/wrapper-user');
+            $this->load->view('template/wrapper-user',$data);
             $this->load->view('template/sidebar-user');
         } else {
             $this->load->view('template/wrapper-guest');

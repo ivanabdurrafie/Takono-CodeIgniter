@@ -120,6 +120,7 @@ class Siswa extends CI_Controller
                 'email' => $this->input->post('email'),
                 'jenkel' => $this->input->post('jenkel'),
                 'id_kelas' => $this->input->post('id_kelas'),
+                'foto' => "default.png",
             );
 
             $insert = $this->curl->simple_post($this->API . '/siswa/tambah', $data, array(CURLOPT_BUFFERSIZE => 10));

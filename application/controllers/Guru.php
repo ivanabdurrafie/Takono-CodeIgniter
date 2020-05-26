@@ -106,6 +106,7 @@ class Guru extends CI_Controller
                 'nama' => $this->input->post('nama'),
                 'email' => $this->input->post('email'),
                 'jenkel' => $this->input->post('jenkel'),
+                'foto' => "default.png",
             );
 
             $insert = $this->curl->simple_post($this->API . '/guru/tambah', $data, array(CURLOPT_BUFFERSIZE => 10));
