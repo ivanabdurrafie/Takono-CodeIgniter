@@ -24,10 +24,10 @@ class Profil extends CI_Controller
 
         if ($this->session->userdata('level') == "guru") {
             $respon = json_decode($this->curl->simple_get($this->API . '/guru/nip/' . $id));
-            $data['guru'] = $respon->value;
+            $data['gurudetail'] = $respon->value;
         } else {
             $respon = json_decode($this->curl->simple_get($this->API . '/siswa/nis/' . $id));
-            $data['siswa'] = $respon->value;
+            $data['siswadetail'] = $respon->value;
         }
 
         if ($this->session->userdata('level') == "guru") {

@@ -7,9 +7,9 @@
                 </div>
             </div>
             <div class="card-body">
-                <p class="font-weight-bold">Oktaviano Andy Suryadi, RPL 3</p>
-                <h5 class="font-weight-bold">Apa yang dimaksud dengan sistem informasi?</h5>
-                <p class="float-right">5/16/2020 : 11:19 </p>
+                <p class="font-weight-bold"><?= $pertanyaan[0]->oleh ?></p>
+                <h5 class="font-weight-bold"><?= $pertanyaan[0]->pertanyaan ?></h5>
+                <p class="float-right"><?= $pertanyaan[0]->tanggal ?></p>
             </div>
         </div>
     </div>
@@ -55,46 +55,29 @@
         </div>
     </div>
 <?php endif ?>
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="judul">
-                    <h3>Jawaban</h3>
+<?php foreach ($komentar as $k) : ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="judul">
+                        <h3>Jawaban</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <p class="font-weight-bold">Sultan Ahmad, RPL 3</p>
-                <h6 class="font-weight-bold">Sistem informasi adalah ...</h6>
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-success">Terimakasih <span class="badge badge-light"> 100</span> </button>
-                <p class="float-right">5/16/2020 : 11:19 </p>
+                <div class="card-body">
+                    <p class="font-weight-bold"><?= $k->oleh ?></p>
+                    <h6 class="font-weight-bold"><?= $k->komentar ?></h6>
+                </div>
+                <div class="card-footer">
+                    <form action="<?= base_url() ?>tanyajawab/like/" method="post">
+                        <input type="hidden" name="id_komentar" value="<?= $k->id_komentar ?>">
+                        <input type="hidden" name="id_pertanyaan" value="<?= $k->id_pertanyaan ?>">
+                        <button class="btn btn-success">Terimakasih <span class="badge badge-light"> <?= $k->skor ?></span> </button>
+                        <p class="float-right"><?= $k->tanggal ?> </p>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="judul">
-                    <h3>Jawaban</h3>
-                </div>
-            </div>
-            <div class="card-body">
-                <p class="font-weight-bold">Fulan, RPL 3</p>
-                <h6 class="font-weight-bold">Mana Saia tahu ...</h6>
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-success">Terimakasih <span class="badge badge-light"> 0</span> </button>
-                <p class="float-right">5/16/2020 : 11:19 </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
+<?php endforeach; ?>
 </div>

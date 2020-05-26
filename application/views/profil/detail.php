@@ -8,10 +8,10 @@
                 <?php if ($this->session->userdata('level') == "guru") : ?>
                     <div class="row">
                         <div class="col-md-2">
-                            <?php if ($guru[0]->foto == null) : ?>
+                            <?php if ($gurudetail[0]->foto == null) : ?>
                                 <img src="<?= base_url() ?>uploads/guest.png" alt="foto" width="200px">
                             <?php else : ?>
-                                <img src="<?= base_url() ?>uploads/profil/<?= $guru[0]->foto ?>" alt="foto" width="200px">
+                                <img src="<?= base_url() ?>uploads/profil/<?= $gurudetail[0]->foto ?>" alt="foto" width="200px">
                             <?php endif; ?>
                         </div>
                         <div class="col-md-6 font-weight-bold">
@@ -19,22 +19,22 @@
                                 <tr>
                                     <td style="width: 120px">NIS</td>
                                     <td style="width: 20px">: </td>
-                                    <td><?= $guru[0]->nip ?></td>
+                                    <td><?= $gurudetail[0]->nip ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width: 120px">Nama</td>
                                     <td style="width: 20px">: </td>
-                                    <td><?= $guru[0]->nama ?></td>
+                                    <td><?= $gurudetail[0]->nama ?></td>
                                 </tr>
                                 <tr>
                                     <td>Jenis kelamin</td>
                                     <td>: </td>
-                                    <td><?= $guru[0]->jenkel ?></td>
+                                    <td><?= $gurudetail[0]->jenkel ?></td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
                                     <td>: </td>
-                                    <td><?= $guru[0]->email ?></td>
+                                    <td><?= $gurudetail[0]->email ?></td>
                                 </tr>
                             </table>
                         </div>
@@ -42,10 +42,10 @@
                 <?php else : ?>
                     <div class="row">
                         <div class="col-md-2">
-                            <?php if ($siswa[0]->foto == null) : ?>
+                            <?php if ($siswadetail[0]->foto == null) : ?>
                                 <img src="<?= base_url() ?>uploads/guest.png" alt="foto" width="200px">
                             <?php else : ?>
-                                <img src="<?= base_url() ?>uploads/profil/<?= $siswa[0]->foto ?>" alt="foto" width="200px">
+                                <img src="<?= base_url() ?>uploads/profil/<?= $siswadetail[0]->foto ?>" alt="foto" width="200px">
                             <?php endif; ?>
                         </div>
                         <div class="col-md-6 font-weight-bold">
@@ -53,27 +53,27 @@
                                 <tr>
                                     <td style="width: 120px">NIS</td>
                                     <td style="width: 20px">: </td>
-                                    <td><?= $siswa[0]->nis ?></td>
+                                    <td><?= $siswadetail[0]->nis ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width: 120px">Nama</td>
                                     <td style="width: 20px">: </td>
-                                    <td><?= $siswa[0]->nama ?></td>
+                                    <td><?= $siswadetail[0]->nama ?></td>
                                 </tr>
                                 <tr>
                                     <td>Kelas</td>
                                     <td>: </td>
-                                    <td><?= $siswa[0]->kelas ?></td>
+                                    <td><?= $siswadetail[0]->kelas ?></td>
                                 </tr>
                                 <tr>
                                     <td>Jenis kelamin</td>
                                     <td>: </td>
-                                    <td><?= $siswa[0]->jenkel ?></td>
+                                    <td><?= $siswadetail[0]->jenkel ?></td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
                                     <td>: </td>
-                                    <td><?= $siswa[0]->email ?></td>
+                                    <td><?= $siswadetail[0]->email ?></td>
                                 </tr>
                             </table>
                         </div>

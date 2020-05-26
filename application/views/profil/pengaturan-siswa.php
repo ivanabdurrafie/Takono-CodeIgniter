@@ -68,15 +68,15 @@
                         <?php if (form_error('password')) : ?>
                             <input type="password" class="form-control form-control-warning form-txt-warning" id="password" placeholder="<?= strip_tags(form_error('password')) ?>" name="password">
                         <?php else : ?>
-                            <input type="password" class="form-control" id="password" placeholder="Masukkan password" name="password" value="">
+                            <input type="password" class="form-control" id="password" placeholder="Masukkan password baru" name="password" value="">
                         <?php endif ?>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password : </label>
+                        <label for="password">Konfrimasi Password : </label>
                         <?php if (form_error('repassword')) : ?>
                             <input type="password" class="form-control form-control-warning form-txt-warning" id="password" placeholder="<?= strip_tags(form_error('repassword')) ?>" name="repassword">
                         <?php else : ?>
-                            <input type="password" class="form-control" id="repassword" placeholder="Masukkan password" name="repassword" value="">
+                            <input type="password" class="form-control" id="repassword" placeholder="Masukkan konfrimasi password" name="repassword" value="">
                         <?php endif ?>
                     </div>
                 </div>
