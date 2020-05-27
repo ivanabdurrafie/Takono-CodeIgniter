@@ -1,3 +1,6 @@
+<div class="berhasil" data-flashdata="<?php echo $this->session->flashdata('berhasil'); ?>"></div>
+<div class="gagal" data-flashdata="<?php echo $this->session->flashdata('gagal'); ?>"></div>
+<div class="nama" data-flashdata="Jawaban"></div>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -9,6 +12,9 @@
             <div class="card-body">
                 <p class="font-weight-bold"><?= $pertanyaan[0]->oleh ?></p>
                 <h5 class="font-weight-bold"><?= $pertanyaan[0]->pertanyaan ?></h5>
+                <?php if ($pertanyaan[0]->foto != null) : ?>
+                    <img src="<?= base_url() ?>uploads/foto-soal/<?= $pertanyaan[0]->foto ?>" alt="" width="500px" class="img-thumbnail">
+                <?php endif ?>
                 <p class="float-right"><?= $pertanyaan[0]->tanggal ?></p>
             </div>
         </div>
@@ -42,11 +48,50 @@
                     </div>
                 </div>
                 <div class="card-body font-weight-bold">
-                    <form action="<?= base_url() ?>tanyajawab/tambahKomentar" method="POST">
+                    <form action="<?= base_url() ?>tanyajawab/detailpertanyaan/<?= $pertanyaan[0]->id_pertanyaan ?>" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="exampleTextarea1">Jawabanmu :</label>
-                            <!-- todo butuh input hidden id_pertanyaan, id_user -->
-                            <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Masukkan jawabanmu disini"></textarea>
+                            <input type="hidden" name="id_pertanyaan" value="<?= $pertanyaan[0]->id_pertanyaan ?>">
+
+                            <?php if ($this->session->userdata('level') == "guru") : ?>
+                                <?php foreach ($guru as $g) : ?>
+                                    <?php if ($g->nip == $this->session->userdata('id_guru')) : ?>
+                                        <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_guru') ?>">
+                                        <input type="hidden" name="oleh" value="<?= $g->nama . ", Guru" ?>">
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                            <?php else : ?>
+                                <?php foreach ($siswa as $s) : ?>
+                                    <?php if ($s->nis == $this->session->userdata('id_siswa')) : ?>
+                                        <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_siswa') ?>">
+                                        <input type="hidden" name="oleh" value="<?= $s->nama . ", " . $s->kelas ?>">
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                            <?php endif ?>
+
+                            <input type="hidden" name="skor" value="0">
+
+                            <?php if (form_error('komentar')) : ?>
+                                <div class="form-group">
+                                    <label for="exampleTextarea1">Komentarmu :</label>
+                                    <textarea class="form-control form-control-danger form-txt-danger" rows="4" placeholder="<?= strip_tags(form_error('komentar'))?>" name="komentar"></textarea>
+                                </div>
+                            <?php else : ?>
+                                <div class="form-group">
+                                    <label for="exampleTextarea1">Komentarmu :</label>
+                                    <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Masukkan komentarmu disini" name="komentar"></textarea>
+                                </div>
+                            <?php endif ?>
+
+                            <div class="form-group">
+                                <label>Bantu dengan Foto? </label>
+                                <input type="file" name="foto" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" readonly placeholder="Jangan lupa beri keterangan foto di kolom jawaban ya" name="txtFoto" required>
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary" type="button">Tekan aku</button>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                         <button class="btn btn-primary">Kirim jawaban</button>
                     </form>
@@ -67,6 +112,9 @@
                 <div class="card-body">
                     <p class="font-weight-bold"><?= $k->oleh ?></p>
                     <h6 class="font-weight-bold"><?= $k->komentar ?></h6>
+                    <?php if ($k->foto != null) : ?>
+                        <img src="<?= base_url() ?>uploads/foto-jawaban/<?= $k->foto ?>" alt="" width="500px" class="img-thumbnail">
+                    <?php endif ?>
                 </div>
                 <div class="card-footer">
                     <form action="<?= base_url() ?>tanyajawab/like/" method="post">

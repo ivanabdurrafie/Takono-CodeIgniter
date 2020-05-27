@@ -20,7 +20,6 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleTextarea1">Pertanyaanmu :</label>
-                        <!-- todo butuh input hidden id_pertanyaan, id_user -->
                         <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Masukkan pertanyaanmu disini"></textarea>
                     </div>
 
@@ -28,7 +27,7 @@
                         <label>Perlu upload foto?</label>
                         <input type="file" name="img[]" class="file-upload-default">
                         <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" readonly placeholder="Masukkan fotomu disini">
+                            <input type="text" class="form-control file-upload-info" readonly placeholder="Jangan lupa beri keterangan foto di kolom pertanyaan ya">
                             <span class="input-group-append">
                                 <button class="file-upload-browse btn btn-primary" type="button">Tekan aku</button>
                             </span>
