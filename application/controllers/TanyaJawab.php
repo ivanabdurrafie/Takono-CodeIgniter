@@ -101,7 +101,9 @@ class TanyaJawab extends CI_Controller
         $data['keteranganHalaman'] = "Ada yang bingung? yuk buat pertanyaan";
         $data['iconHalaman'] = "ik-message-circle";
         $data['breadcrumbs'] = "Tanya Jawab / Buat Pertanyaan";
-        $this->load->view('template/header', $data);
+
+        $respon = json_decode($this->curl->simple_get($this->API . '/mapel/'));
+        $data['mapel'] = $respon->value;
 
         if ($this->session->userdata('level') == "guru") {
             $respon = json_decode($this->curl->simple_get($this->API . '/guru/'));
@@ -111,23 +113,74 @@ class TanyaJawab extends CI_Controller
             $data['siswa'] = $respon->value;
         }
 
-        if ($this->session->userdata('level') == "admin") {
-            $this->load->view('template/wrapper-admin');
-        } elseif ($this->session->userdata('level') == "guru" || $this->session->userdata('level') == "siswa") {
-            $this->load->view('template/wrapper-user', $data);
+        $this->form_validation->set_rules(
+            'pertanyaan',
+            'Pertanyaan',
+            'required',
+            array(
+                'required' => 'Kolom %s masih kosong loh!',
+            )
+        );
+
+        $this->form_validation->set_rules(
+            'id_mapel',
+            'Mata Pelajaran',
+            'required',
+            array(
+                'required' => 'Kamu masih belum memilih %s loh!',
+            )
+        );
+
+        if ($this->form_validation->run() ==  FALSE) {
+            $this->load->view('template/header', $data);
+
+            if ($this->session->userdata('level') == "admin") {
+                $this->load->view('template/wrapper-admin');
+            } elseif ($this->session->userdata('level') == "guru" || $this->session->userdata('level') == "siswa") {
+                $this->load->view('template/wrapper-user', $data);
+            } else {
+                $this->load->view('template/wrapper-guest');
+            }
+
+            $this->load->view('template/sidebar-user');
+            $this->load->view('template/breadcrumbs');
+            $this->load->view('tanya-jawab/tambah', $data);
+            $this->load->view('template/footer');
         } else {
-            $this->load->view('template/wrapper-guest');
+            if (empty($_FILES['foto']['name'])) {
+                $data = array(
+                    'id_pertanyaan' => $this->input->NULL,
+                    'pertanyaan' => $this->input->post('pertanyaan'),
+                    'id_mapel' => $this->input->post('id_mapel'),
+                    'id_user' => $this->input->post('id_user'),
+                    'oleh' => $this->input->post('oleh'),
+                );
+            } else {
+                $data = array(
+                    'id_pertanyaan' => $this->input->NULL,
+                    'pertanyaan' => $this->input->post('pertanyaan'),
+                    'id_mapel' => $this->input->post('id_mapel'),
+                    'id_user' => $this->input->post('id_user'),
+                    'oleh' => $this->input->post('oleh'),
+                    'foto' => $this->uploadFotoPertanyaan(),
+                );
+            }
+
+            $insert = $this->curl->simple_post($this->API . '/pertanyaan/tambah', $data, array(CURLOPT_BUFFERSIZE => 10));
+
+            if ($insert) {
+                $this->session->set_flashdata('berhasil', 'ditambahkan!');
+            } else {
+                $this->session->set_flashdata('gagal', 'ditambahkan!');
+            }
+            redirect('tanyajawab');
         }
-        $this->load->view('template/sidebar-user');
-        $this->load->view('template/breadcrumbs');
-        $this->load->view('tanya-jawab/tambah');
-        $this->load->view('template/footer');
     }
 
     public function tambahKomentar()
     {
         $id_pertanyaan = $this->input->post('id_pertanyaan');
-        
+
         if (empty($_FILES['foto']['name'])) {
             $data = array(
                 'id_komentar' => $this->input->NULL,
@@ -137,7 +190,7 @@ class TanyaJawab extends CI_Controller
                 'id_user' => $this->input->post('id_user'),
                 'oleh' => $this->input->post('oleh'),
             );
-        }else{
+        } else {
             $data = array(
                 'id_komentar' => $this->input->NULL,
                 'id_pertanyaan' => $this->input->post('id_pertanyaan'),
@@ -145,10 +198,10 @@ class TanyaJawab extends CI_Controller
                 'skor' => $this->input->post('skor'),
                 'id_user' => $this->input->post('id_user'),
                 'oleh' => $this->input->post('oleh'),
-                'foto' => $this->uploadFoto(),
+                'foto' => $this->uploadFotoJawaban(),
             );
         }
-        
+
         $insert = $this->curl->simple_post($this->API . '/komentar/tambah', $data, array(CURLOPT_BUFFERSIZE => 10));
 
         if ($insert) {
@@ -225,7 +278,7 @@ class TanyaJawab extends CI_Controller
         redirect('tanyajawab/detailpertanyaan/' . $id_pertanyaan);
     }
 
-    private function uploadFoto()
+    private function uploadFotoJawaban()
     {
         $config['upload_path']          = './uploads/foto-jawaban';
         $config['allowed_types']        = 'jpeg|jpg|png|gif|svg';
@@ -238,12 +291,35 @@ class TanyaJawab extends CI_Controller
         }
     }
 
-    private function ubahFoto()
+    private function ubahFotoJawaban()
     {
         if (empty($_FILES['foto']['name'])) {
             $foto = $this->input->post('fotoLama');
         } else {
-            $foto = $this->uploadFoto();
+            $foto = $this->uploadFotoJawaban();
+        }
+        return $foto;
+    }
+
+    private function uploadFotoPertanyaan()
+    {
+        $config['upload_path']          = './uploads/foto-soal';
+        $config['allowed_types']        = 'jpeg|jpg|png|gif|svg';
+        $config['max_size']             = '2048';
+
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('foto')) {
+            return $this->upload->data('file_name');
+        }
+    }
+
+    private function ubahFotoPertanyaan()
+    {
+        if (empty($_FILES['foto']['name'])) {
+            $foto = $this->input->post('fotoLama');
+        } else {
+            $foto = $this->uploadFotoPertanyaan();
         }
         return $foto;
     }

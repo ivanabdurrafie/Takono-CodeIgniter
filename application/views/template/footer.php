@@ -21,7 +21,7 @@
 <script src="<?= base_url('') ?>assets/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('') ?>assets/plugins/d3/dist/d3.min.js"></script>
 <script src="<?= base_url('') ?>assets/plugins/c3/c3.min.js"></script>
-<script src="<?= base_url('') ?>assets/js/tables.js"></script>
+<!-- <script src="<?= base_url('') ?>assets/js/tables.js"></script> -->
 <script src="<?= base_url('') ?>assets/js/myalert.js"></script>
 <script src="<?= base_url('') ?>assets/js/widgets.js"></script>
 <script src="<?= base_url('') ?>assets/js/charts.js"></script>

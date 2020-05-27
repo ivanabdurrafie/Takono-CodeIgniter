@@ -15,12 +15,43 @@
                 <?php if ($pertanyaan[0]->foto != null) : ?>
                     <img src="<?= base_url() ?>uploads/foto-soal/<?= $pertanyaan[0]->foto ?>" alt="" width="500px" class="img-thumbnail">
                 <?php endif ?>
+
+            </div>
+            <div class="card-footer">
                 <p class="float-right"><?= $pertanyaan[0]->tanggal ?></p>
             </div>
         </div>
     </div>
 </div>
 
+<?php foreach ($komentar as $k) : ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="judul">
+                        <h3>Jawaban</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="font-weight-bold"><?= $k->oleh ?></p>
+                    <h6 class="font-weight-bold"><?= $k->komentar ?></h6>
+                    <?php if ($k->foto != null) : ?>
+                        <img src="<?= base_url() ?>uploads/foto-jawaban/<?= $k->foto ?>" alt="" width="500px" class="img-thumbnail">
+                    <?php endif ?>
+                </div>
+                <div class="card-footer">
+                    <form action="<?= base_url() ?>tanyajawab/like/" method="post">
+                        <input type="hidden" name="id_komentar" value="<?= $k->id_komentar ?>">
+                        <input type="hidden" name="id_pertanyaan" value="<?= $k->id_pertanyaan ?>">
+                        <button class="btn btn-success">Terimakasih <span class="badge badge-light"> <?= $k->skor ?></span> </button>
+                        <p class="float-right"><?= $k->tanggal ?> </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
 <?php if ($this->session->userdata('level') == null) : ?>
     <div class="row">
         <div class="col-md-12">
@@ -73,7 +104,7 @@
                             <?php if (form_error('komentar')) : ?>
                                 <div class="form-group">
                                     <label for="exampleTextarea1">Komentarmu :</label>
-                                    <textarea class="form-control form-control-danger form-txt-danger" rows="4" placeholder="<?= strip_tags(form_error('komentar'))?>" name="komentar"></textarea>
+                                    <textarea class="form-control form-control-danger form-txt-danger" rows="4" placeholder="<?= strip_tags(form_error('komentar')) ?>" name="komentar"></textarea>
                                 </div>
                             <?php else : ?>
                                 <div class="form-group">
@@ -100,32 +131,4 @@
         </div>
     </div>
 <?php endif ?>
-<?php foreach ($komentar as $k) : ?>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="judul">
-                        <h3>Jawaban</h3>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <p class="font-weight-bold"><?= $k->oleh ?></p>
-                    <h6 class="font-weight-bold"><?= $k->komentar ?></h6>
-                    <?php if ($k->foto != null) : ?>
-                        <img src="<?= base_url() ?>uploads/foto-jawaban/<?= $k->foto ?>" alt="" width="500px" class="img-thumbnail">
-                    <?php endif ?>
-                </div>
-                <div class="card-footer">
-                    <form action="<?= base_url() ?>tanyajawab/like/" method="post">
-                        <input type="hidden" name="id_komentar" value="<?= $k->id_komentar ?>">
-                        <input type="hidden" name="id_pertanyaan" value="<?= $k->id_pertanyaan ?>">
-                        <button class="btn btn-success">Terimakasih <span class="badge badge-light"> <?= $k->skor ?></span> </button>
-                        <p class="float-right"><?= $k->tanggal ?> </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endforeach; ?>
 </div>

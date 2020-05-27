@@ -8,13 +8,15 @@ function filterColumn ( i ) {
         $('#col'+i+'_filter').val()
     ).draw();
 }
+
 $(document).ready(function() {
     var table = $('#data_table').DataTable({
         responsive: true,
         select: true,
         'aoColumnDefs': [{
             'bSortable': false,
-            'aTargets': ['nosort']
+            'aTargets': ['nosort'],
+            "visible": false,
         }]
     });
     $('#data_table tbody').on( 'click', 'tr', function() {
