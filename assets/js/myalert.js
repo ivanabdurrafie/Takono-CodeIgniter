@@ -2,7 +2,9 @@
 
     const berhasil = $('.berhasil').data('flashdata');
     const gagal = $('.gagal').data('flashdata');
+    const gagalLogin = $('.gagal-login').data('flashdata');
     const nama = $('.nama').data('flashdata');
+    const namaLogin = $('.nama-login').data('flashdata');
     const login = $('.pesan').data('login');
 
     if (berhasil) {
@@ -17,12 +19,18 @@
             'Gagal ' + gagal,
             'error'
         )
+    } else if(gagalLogin){
+        Swal.fire(
+            namaLogin,
+            gagalLogin,
+            'error'
+        )
     }
 
     if (login) {
         Swal.fire(
             login,
-            'Pastikan username dan password sudah benar',
+            'Sepertinya username dan passwordmu salah',
             'error'
         )
     } 

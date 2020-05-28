@@ -36,7 +36,7 @@ class Login extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('template/header', $data);
-            $this->load->view('login/index');
+            $this->load->view('login/index',$data);
             $this->load->view('template/footer-login');
         } else {
             $this->proseslogin();
@@ -60,11 +60,8 @@ class Login extends CI_Controller
             $this->session->set_userdata('level', $row->level);
             redirect('dashboard', 'refresh');
         } else {
-            $data['pesan'] = 'Login gagal';
-            $data['title'] = 'Halaman login';
-            $this->load->view('template/header', $data);
-            $this->load->view('login/index');
-            $this->load->view('template/footer-login');
+            $this->session->set_flashdata('gagal-login', 'Sepertinya kamu memasukkan data yang salah');
+            redirect('login');
         }
     }
 
@@ -78,28 +75,44 @@ class Login extends CI_Controller
     {
         $data['title'] = "Lupa Password | Takono. Forum Tanya Jawab Sekolah";
 
+        $this->form_validation->set_rules(
+            'username',
+            'Username',
+            'required',
+            array(
+                'required' => '%s masih kosong loh.'
+            )
+        );
 
         $this->form_validation->set_rules(
             'email',
             'email',
-            'required',
+            'required|valid_email',
             array(
-                'required' => 'Heii, %smu masih kosong loh'
+                'required' => 'Heii, %smu masih kosong loh',
+                'valid_email' => 'Heii, %smu formatnya salah'
             )
         );
 
         if ($this->form_validation->run() == FALSE) {
-            # code...
             $this->load->view('template/header', $data);
             $this->load->view('login/lupa-password');
             $this->load->view('template/footer-login');
         } else {
-            # code...
-            $this->mahasiswa_model->tambahdatamhs();
-            // untuk flashdata mempunyai 2 paramenter(nama flashdata/alias, isi dari flashdatanya)
-            $this->session->set_flashdata('flash-data', 'ditambahkan');
-            redirect('mahasiswa', 'refresh');
+            $this->prosesLupaPassword();
         }
+    }
+
+    public function prosesLupaPassword()
+    {
+        $proses = $this->login_model->resetPassword();
+        if ($proses) {
+            $this->session->set_flashdata('berhasil', 'Direset loh');
+        } else {
+            $this->session->set_flashdata('gagal', 'Direset. <br> Ups, sepertinya kamu memasukkan data yang salah');
+        }
+
+        redirect('login/lupapassword');
     }
 }
 

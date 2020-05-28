@@ -30,8 +30,14 @@
                     <div class="nav-item active">
                         <a href="<?= base_url()?>mapel"><i class="ik ik-book-open"></i><span>Mata Pelajaran</span></a>
                     </div>
+                </nav>
+                <nav id="main-menu-navigation" class="navigation-main">
+                    <div class="nav-lavel">Data Sistem</div>
                     <div class="nav-item active">
                         <a href="<?= base_url()?>users"><i class="ik ik-users"></i><span>User</span></a>
+                    </div>
+                    <div class="nav-item active">
+                        <a href="<?= base_url()?>jawaban"><i class="ik ik-alert-circle"></i><span>Laporan</span></a>
                     </div>
                 </nav>
                 <nav id="main-menu-navigation" class="navigation-main">

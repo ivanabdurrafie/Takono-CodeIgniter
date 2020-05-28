@@ -1,3 +1,6 @@
+<div class="berhasil" data-flashdata="<?php echo $this->session->flashdata('berhasil'); ?>"></div>
+<div class="gagal" data-flashdata="<?php echo $this->session->flashdata('gagal'); ?>"></div>
+<div class="nama" data-flashdata="Password"></div>
 <div class="auth-wrapper">
     <div class="container-fluid h-100">
         <div class="row flex-row h-100 bg-white">
@@ -12,23 +15,33 @@
                         <a href="<?= base_url() ?>login/lupaPassword"><img src="<?= base_url() ?>assets/src/img/brand.png" alt="" style="width: 100px;"></a>
                     </div>
                     <h3>Lupa password kamu?</h3>
-                    <p>Kami akan mengirim password baru kamu ke emailmu.</p>
+                    <p>Kami akan melakukan reset pada passwordmu.</p>
                     <form action="<?= base_url() ?>login/lupapassword" method="post" enctype="multipart/form-data">
                         <div class="form-group">
+                            <?php if (form_error('username')) : ?>
+                                <input type="text" class="form-control form-control-warning form-txt-warning" placeholder="<?= strip_tags(form_error('username')) ?>" name="username">
+                                <i class="ik ik-user"></i>
+                            <?php else : ?>
+                                <input type="text" class="form-control" placeholder="Masukkan username kamu" name="username" value="<?= set_value('username') ?>">
+                                <i class="ik ik-user"></i>
+                            <?php endif ?>
+                        </div>
+
+                        <div class="form-group">
                             <?php if (form_error('email')) : ?>
-                                <input type="email" class="form-control form-control-danger form-txt-danger" placeholder="<?= strip_tags(form_error('email'))?>" placeholder="" name="email">
+                                <input type="text" class="form-control form-control-danger form-txt-danger" placeholder="<?= strip_tags(form_error('email')) ?>" placeholder="" name="email">
                                 <i class="ik ik-mail"></i>
                             <?php else : ?>
-                                <input type="email" class="form-control" placeholder="Masukkan emailmu" name="email">
+                                <input type="text" class="form-control" placeholder="Masukkan emailmu" name="email" value="<?= set_value('email') ?>">
                                 <i class="ik ik-mail"></i>
                             <?php endif ?>
                         </div>
                         <div class="sign-btn text-center">
-                            <button class="btn btn-theme" name="submit">Kirim</button>
+                            <button class="btn btn-theme" name="submit">Reset</button>
                         </div>
                     </form>
                     <div class="register">
-                        <p>Sudah ingat? <a href="<?= base_url() ?>login/" class="font-weight-bold">Yuk masuk lewat sini</a></p>
+                        <p>Berhasil? <a href="<?= base_url() ?>login/" class="font-weight-bold">Yuk masuk lewat sini</a></p>
                     </div>
                 </div>
             </div>

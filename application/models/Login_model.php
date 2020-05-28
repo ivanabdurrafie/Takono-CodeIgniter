@@ -20,6 +20,20 @@ class Login_model extends CI_Model
             return false;
         }
     }
+
+    public function resetPassword()
+    {
+        $data = [
+            "username" => $this->input->post('username', true), 
+            "email" => $this->input->post('email', true),
+            "password" => htmlspecialchars(md5($this->input->post('username', true))),
+        ];
+
+        $this->db->where('username', $this->input->post('username'));
+        $this->db->where('email', $this->input->post('email'));
+        $this->db->update('user', $data);
+
+    }
 }
 
 /* End of file Login_model.php */

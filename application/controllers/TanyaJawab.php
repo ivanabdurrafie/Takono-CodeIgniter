@@ -36,13 +36,14 @@ class TanyaJawab extends CI_Controller
 
         if ($this->session->userdata('level') == "admin") {
             $this->load->view('template/wrapper-admin');
+            $this->load->view('template/sidebar-admin');
         } elseif ($this->session->userdata('level') == "guru" || $this->session->userdata('level') == "siswa") {
             $this->load->view('template/wrapper-user');
+            $this->load->view('template/sidebar-admin');
         } else {
             $this->load->view('template/wrapper-guest');
         }
 
-        $this->load->view('template/sidebar-user');
         $this->load->view('template/breadcrumbs');
         $this->load->view('tanya-jawab/index', $data);
         $this->load->view('template/footer');
@@ -50,7 +51,7 @@ class TanyaJawab extends CI_Controller
 
     public function TanyaJawabku($id)
     {
-        if ($this->session->userdata('level') == null) {
+        if ($this->session->userdata('level') == "siswa" && $this->session->userdata('level') == "guru") {
             redirect('dashboard', 'refresh');
         }
 
@@ -92,8 +93,8 @@ class TanyaJawab extends CI_Controller
 
     public function tambahPertanyaan()
     {
-        if ($this->session->userdata('level') == null) {
-            redirect('tanya', 'refresh');
+        if ($this->session->userdata('level') == "siswa" && $this->session->userdata('level') == "guru") {
+            redirect('dashboard', 'refresh');
         }
 
         $data['title'] = "Buat Pertanyaan | Takono. Forum Tanya Jawab Sekolah";
@@ -248,19 +249,47 @@ class TanyaJawab extends CI_Controller
 
             if ($this->session->userdata('level') == "admin") {
                 $this->load->view('template/wrapper-admin');
+                $this->load->view('template/sidebar-admin');
             } elseif ($this->session->userdata('level') == "guru" || $this->session->userdata('level') == "siswa") {
                 $this->load->view('template/wrapper-user');
+                $this->load->view('template/sidebar-user');
             } else {
                 $this->load->view('template/wrapper-guest');
             }
 
-            $this->load->view('template/sidebar-user');
             $this->load->view('template/breadcrumbs');
             $this->load->view('tanya-jawab/detail', $data);
             $this->load->view('template/footer');
         } else {
             $this->tambahKomentar();
         }
+    }
+
+    public function hapusPertanyaan($id)
+    {
+        
+        $delete = $this->curl->simple_delete($this->API . '/pertanyaan/delete/' . $id, array(CURLOPT_BUFFERSIZE => 10));
+
+        if ($delete) {
+            $this->session->set_flashdata('berhasil', 'dihapus!');
+        } else {
+            $this->session->set_flashdata('gagal', 'dihapus!');
+        }
+        
+        redirect('tanyajawab/tanyajawabku/');
+    }
+
+    public function hapusKomentar($id)
+    {
+        $delete = $this->curl->simple_delete($this->API . '/komentar/delete/' . $id, array(CURLOPT_BUFFERSIZE => 10));
+
+        if ($delete) {
+            $this->session->set_flashdata('berhasil', 'dihapus!');
+        } else {
+            $this->session->set_flashdata('gagal', 'dihapus!');
+        }
+        
+        redirect('siswa');
     }
 
     public function like()

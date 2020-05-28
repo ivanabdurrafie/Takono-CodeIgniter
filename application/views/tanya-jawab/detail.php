@@ -18,6 +18,7 @@
 
             </div>
             <div class="card-footer">
+                <a href="<?= base_url() ?>tanyajawab/" class="btn btn-light">Kembali</a>
                 <p class="float-right"><?= $pertanyaan[0]->tanggal ?></p>
             </div>
         </div>
@@ -103,13 +104,13 @@
 
                             <?php if (form_error('komentar')) : ?>
                                 <div class="form-group">
-                                    <label for="exampleTextarea1">Komentarmu :</label>
+                                    <label for="exampleTextarea1">Jawabanmu :</label>
                                     <textarea class="form-control form-control-danger form-txt-danger" rows="4" placeholder="<?= strip_tags(form_error('komentar')) ?>" name="komentar"></textarea>
                                 </div>
                             <?php else : ?>
                                 <div class="form-group">
-                                    <label for="exampleTextarea1">Komentarmu :</label>
-                                    <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Masukkan komentarmu disini" name="komentar"></textarea>
+                                    <label for="exampleTextarea1">Jawabanmu :</label>
+                                    <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Masukkan jawabanmu disini" name="komentar"></textarea>
                                 </div>
                             <?php endif ?>
 

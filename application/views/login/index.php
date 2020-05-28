@@ -1,3 +1,6 @@
+
+<div class="gagal-login" data-flashdata="<?php echo $this->session->flashdata('gagal-login'); ?>"></div>
+<div class="nama-login" data-flashdata="Ups.. Gagal Login"></div>
 <div class="auth-wrapper">
     <div class="container-fluid h-100">
         <div class="row flex-row h-100 bg-white">
