@@ -42,7 +42,6 @@
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-primary">Ubah profil</button>
-                    <a href="<?= base_url() ?>" class="btn btn-light ml-2">Kembali</a>
                 </div>
             </form>
         </div>
@@ -82,7 +81,6 @@
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-primary">Ubah akun</button>
-                    <a href="<?= base_url() ?>" class="btn btn-light ml-2">Kembali</a>
                 </div>
             </form>
         </div>

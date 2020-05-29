@@ -12,7 +12,7 @@ class Guru extends CI_Controller
         if ($this->session->userdata('level') != "admin") {
             redirect('dashboard', 'refresh');
         }
-        $this->API = "http://localhost:8000/api";
+        $this->API = "http://localhost:8080/Takono-laravel/api";
         $this->load->model('user_model');
     }
 

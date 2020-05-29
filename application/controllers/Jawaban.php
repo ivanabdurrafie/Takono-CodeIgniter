@@ -12,7 +12,7 @@ class Jawaban extends CI_Controller
             redirect('dashboard', 'refresh');
         }
 
-        $this->API = "http://localhost:8000/api";
+        $this->API = "http://localhost:8080/Takono-laravel/api";
     }
 
 

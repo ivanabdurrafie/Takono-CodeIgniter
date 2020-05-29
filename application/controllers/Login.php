@@ -36,7 +36,7 @@ class Login extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('template/header', $data);
-            $this->load->view('login/index',$data);
+            $this->load->view('login/index', $data);
             $this->load->view('template/footer-login');
         } else {
             $this->proseslogin();
@@ -105,11 +105,14 @@ class Login extends CI_Controller
 
     public function prosesLupaPassword()
     {
-        $proses = $this->login_model->resetPassword();
+        $username = $this->input->post('username');
+        $email = $this->input->post('email');
+
+        $proses = $this->login_model->resetPassword($username, $email);
         if ($proses) {
-            $this->session->set_flashdata('berhasil', 'Direset loh');
-        } else {
             $this->session->set_flashdata('gagal', 'Direset. <br> Ups, sepertinya kamu memasukkan data yang salah');
+        } else {
+            $this->session->set_flashdata('berhasil', 'Direset loh');
         }
 
         redirect('login/lupapassword');

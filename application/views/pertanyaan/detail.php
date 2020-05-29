@@ -6,7 +6,12 @@
         <div class="card">
             <div class="card-header">
                 <div class="judul">
-                    <h3>Pertanyaan</h3>
+                    <h3>
+                        Pertanyaan
+                        <?php if ($pertanyaan[0]->status != null) {
+                            echo " (" . $pertanyaan[0]->status . ", " . $pertanyaan[0]->tanggal_edit . ")";
+                        } ?>
+                    </h3>
                 </div>
             </div>
             <div class="card-body">
@@ -31,7 +36,12 @@
             <div class="card">
                 <div class="card-header">
                     <div class="judul">
-                        <h3>Jawaban</h3>
+                        <h3>
+                            Jawaban
+                            <?php if ($k->status != null) {
+                                echo " (" . $k->status . ", " . $k->tanggal_edit . ")";
+                            } ?>
+                        </h3>
                     </div>
                 </div>
                 <div class="card-body">

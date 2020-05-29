@@ -15,7 +15,7 @@
                                 <div class="icon"><i class="ik ik-home"></i></div>
                                 <div class="content">
                                     <div class="text">Alamat Sekolah</div>
-                                    <div class="number font-weight-bold">Jl. Raya Pasirian No.03, Kec.Pasirian Kab.Lumajang Jawa Timur (67372) (0334)34321</div>
+                                    <div class="number font-weight-bold">Jl. Soekarno Hatta No.9, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141</div>
                                 </div>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                                 <div class="icon"><i class="fab fa-facebook text-facebook"></i></div>
                                 <div class="content">
                                     <div class="text">Facebook Sekolah</div>
-                                    <div class="number font-weight-bold">smpn1pasirian</div>
+                                    <div class="number font-weight-bold">smksoehat</div>
                                 </div>
                             </a>
                         </div>
@@ -39,7 +39,7 @@
                                 <div class="icon"><i class="fab fa-instagram text-instagram"></i></div>
                                 <div class="content">
                                     <div class="text">Instagram Sekolah</div>
-                                    <div class="number font-weight-bold">smpn1pasirian</div>
+                                    <div class="number font-weight-bold">smksoehat</div>
                                 </div>
                             </a>
                         </div>
@@ -51,7 +51,7 @@
                                 <div class="icon"><i class="fab fa-google text-google"></i></div>
                                 <div class="content">
                                     <div class="text">Email Sekolah</div>
-                                    <div class="number font-weight-bold">smpn1pasirian@gmail.com</div>
+                                    <div class="number font-weight-bold">smksoehat@gmail.com</div>
                                 </div>
                             </div>
                         </div>

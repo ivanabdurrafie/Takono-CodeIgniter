@@ -1,88 +1,51 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                <h3>Profilku</h3>
-            </div>
-            <div class="card-body">
-                <?php if ($this->session->userdata('level') == "guru") : ?>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <?php if ($gurudetail[0]->foto == null) : ?>
-                                <img src="<?= base_url() ?>uploads/guest.png" alt="foto" width="200px">
-                            <?php else : ?>
-                                <img src="<?= base_url() ?>uploads/profil/<?= $gurudetail[0]->foto ?>" alt="foto" width="200px">
-                            <?php endif; ?>
-                        </div>
-                        <div class="col-md-6 font-weight-bold">
-                            <table>
-                                <tr>
-                                    <td style="width: 120px">NIS</td>
-                                    <td style="width: 20px">: </td>
-                                    <td><?= $gurudetail[0]->nip ?></td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 120px">Nama</td>
-                                    <td style="width: 20px">: </td>
-                                    <td><?= $gurudetail[0]->nama ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Jenis kelamin</td>
-                                    <td>: </td>
-                                    <td><?= $gurudetail[0]->jenkel ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td>: </td>
-                                    <td><?= $gurudetail[0]->email ?></td>
-                                </tr>
-                            </table>
-                        </div>
+            <?php if ($this->session->userdata('level') == "guru") : ?>
+                <div class="card-body">
+                    <div class="text-center">
+                        <?php if ($gurudetail[0]->foto == null) : ?>
+                            <img src="<?= base_url() ?>uploads/guest.png" alt="foto" class="rounded-circle" width="150">
+                        <?php else : ?>
+                            <img src="<?= base_url() ?>uploads/profil/<?= $gurudetail[0]->foto ?>" alt="foto" class="rounded-circle" width="150">
+                        <?php endif; ?>
+                        <h4 class="card-title mt-10"><?= $gurudetail[0]->nama ?></h4>
+                        <p class="card-subtitle">Guru</p>
                     </div>
-                <?php else : ?>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <?php if ($siswadetail[0]->foto == null) : ?>
-                                <img src="<?= base_url() ?>uploads/guest.png" alt="foto" width="200px">
-                            <?php else : ?>
-                                <img src="<?= base_url() ?>uploads/profil/<?= $siswadetail[0]->foto ?>" alt="foto" width="200px">
-                            <?php endif; ?>
-                        </div>
-                        <div class="col-md-6 font-weight-bold">
-                            <table>
-                                <tr>
-                                    <td style="width: 120px">NIS</td>
-                                    <td style="width: 20px">: </td>
-                                    <td><?= $siswadetail[0]->nis ?></td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 120px">Nama</td>
-                                    <td style="width: 20px">: </td>
-                                    <td><?= $siswadetail[0]->nama ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Kelas</td>
-                                    <td>: </td>
-                                    <td><?= $siswadetail[0]->kelas ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Jenis kelamin</td>
-                                    <td>: </td>
-                                    <td><?= $siswadetail[0]->jenkel ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td>: </td>
-                                    <td><?= $siswadetail[0]->email ?></td>
-                                </tr>
-                            </table>
-                        </div>
+                    <hr class="mb-0">
+                    <div class="card-body">
+                        <small class="text-muted d-block">NIP</small>
+                        <h6><?= $gurudetail[0]->nip ?></h6>
+                        <small class="text-muted d-block pt-10">Jenis Kelamin</small>
+                        <h6><?= $gurudetail[0]->jenkel ?></h6>
+                        <small class="text-muted d-block pt-10">Email</small>
+                        <h6><?= $gurudetail[0]->email ?></h6>
                     </div>
-                <?php endif ?>
-            </div>
-            <div class="card-footer">
-                <a href="<?= base_url() ?>" class="btn btn-light">Kembali</a>
-            </div>
+                </div>
+            <?php else : ?>
+                <div class="card-body">
+                    <div class="text-center">
+                        <?php if ($siswadetail[0]->foto == null) : ?>
+                            <img src="<?= base_url() ?>uploads/guest.png" alt="foto" class="rounded-circle" width="150">
+                        <?php else : ?>
+                            <img src="<?= base_url() ?>uploads/profil/<?= $siswadetail[0]->foto ?>" alt="foto" class="rounded-circle" width="150">
+                        <?php endif; ?>
+                        <h4 class="card-title mt-10"><?= $siswadetail[0]->nama ?></h4>
+                        <p class="card-subtitle">Siswa</p>
+                    </div>
+                    <hr class="mb-0">
+                    <div class="card-body">
+                        <small class="text-muted d-block">NIS</small>
+                        <h6><?= $siswadetail[0]->nis ?></h6>
+                        <small class="text-muted d-block">Kelas</small>
+                        <h6><?= $siswadetail[0]->kelas ?></h6>
+                        <small class="text-muted d-block pt-10">Jenis Kelamin</small>
+                        <h6><?= $siswadetail[0]->jenkel ?></h6>
+                        <small class="text-muted d-block pt-10">Email</small>
+                        <h6><?= $siswadetail[0]->email ?></h6>
+                    </div>
+                </div>
+            <?php endif ?>
         </div>
     </div>
 </div>

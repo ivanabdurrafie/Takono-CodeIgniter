@@ -21,17 +21,12 @@ class Login_model extends CI_Model
         }
     }
 
-    public function resetPassword()
+    public function resetPassword($username, $email)
     {
-        $data = [
-            "username" => $this->input->post('username', true), 
-            "email" => $this->input->post('email', true),
-            "password" => htmlspecialchars(md5($this->input->post('username', true))),
-        ];
-
-        $this->db->where('username', $this->input->post('username'));
-        $this->db->where('email', $this->input->post('email'));
-        $this->db->update('user', $data);
+        $this->db->set('password', md5($username));
+        $this->db->where('username', $username);
+        $this->db->where('email', $email);
+        $this->db->update('user');
 
     }
 }

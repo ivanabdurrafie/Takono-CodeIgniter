@@ -24,8 +24,11 @@
                 <p>Haii. Walaupun disini bukan ruang kelas, usahakan tetap jaga etika dan sopan santun
                     ya ;D. Ini beberapa peraturan yang harus kalian perhatikan saat menggunakan forum
                     ini. Dibaca yaa.. </p>
-                <p>1. .....</p>
-                <p>2. .....</p>
+                <p>1. Gunakan kalimat yang <span class="text-danger font-weight-bold"> sopan dan santun. </span></p>
+                <p>2. Jangan <span class="text-danger font-weight-bold">membully, mempermalukan</span> pengguna yang lain ya.</p>
+                <p>3. Bantu jawab pertanyaan yang ditanyakan, tapi <span class="text-danger font-weight-bold"> jawabannya harus sesuai dengan yang ditanyakan ya. </span></p>
+                <p>4. Jika pertanyaan atau jawaban kalian tidak di notice, <span class="text-danger font-weight-bold"> jangan SPAM. </span> Sabar aja dulu </p>
+                <p>5. <span class="text-danger font-weight-bold"> Pertanyaan dan jawaban yang melanggar aturan, akan dihapus </span> oleh admin</p>
             </div>
         </div>
     </div>

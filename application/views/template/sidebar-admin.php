@@ -36,9 +36,6 @@
                     <div class="nav-item active">
                         <a href="<?= base_url()?>users"><i class="ik ik-users"></i><span>User</span></a>
                     </div>
-                    <div class="nav-item active">
-                        <a href="<?= base_url()?>jawaban"><i class="ik ik-alert-circle"></i><span>Laporan</span></a>
-                    </div>
                 </nav>
                 <nav id="main-menu-navigation" class="navigation-main">
                     <div class="nav-lavel">Tanya Jawab</div>

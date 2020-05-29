@@ -6,7 +6,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <?php if ($siswa[0]->foto == null) : ?>
                             <img src="<?= base_url() ?>uploads/guest.png" alt="foto" width="200px">
                         <?php else : ?>

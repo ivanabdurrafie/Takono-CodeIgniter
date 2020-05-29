@@ -6,7 +6,12 @@
         <div class="card">
             <div class="card-header">
                 <div class="judul">
-                    <h3>Pertanyaan</h3>
+                    <h3>
+                        Pertanyaan
+                        <?php if ($pertanyaan[0]->status != null) {
+                            echo " (" . $pertanyaan[0]->status . ", " . $pertanyaan[0]->tanggal_edit . ")";
+                        } ?>
+                    </h3>
                 </div>
             </div>
             <div class="card-body">
@@ -15,10 +20,8 @@
                 <?php if ($pertanyaan[0]->foto != null) : ?>
                     <img src="<?= base_url() ?>uploads/foto-soal/<?= $pertanyaan[0]->foto ?>" alt="" width="500px" class="img-thumbnail">
                 <?php endif ?>
-
             </div>
             <div class="card-footer">
-                <a href="<?= base_url() ?>tanyajawab/" class="btn btn-light">Kembali</a>
                 <p class="float-right"><?= $pertanyaan[0]->tanggal ?></p>
             </div>
         </div>
@@ -31,7 +34,12 @@
             <div class="card">
                 <div class="card-header">
                     <div class="judul">
-                        <h3>Jawaban</h3>
+                        <h3>
+                            Jawaban
+                            <?php if ($k->status != null) {
+                                echo " (" . $k->status . ", " . $k->tanggal_edit . ")";
+                            } ?>
+                        </h3>
                     </div>
                 </div>
                 <div class="card-body">
